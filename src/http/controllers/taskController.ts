@@ -6,6 +6,7 @@ import { updateTask } from "../../app/use-cases/task/updateTask"
 import { findTask } from "../../app/use-cases/task/findTask"
 
 import { PrismaTaskRepository } from "../../database/prisma/prismaTaskRepository"
+import { removeTask } from "../../app/use-cases/task/removeTask"
 const repository = new PrismaTaskRepository()
 
 export async function create(req: Request, res: Response, next: NextFunction) {
@@ -61,6 +62,19 @@ export async function detail(req: Request, res: Response, next: NextFunction) {
             id: req.params.id,
         })
         return res.status(200).send(task)
+    } catch (err) {
+        next(err)
+    }
+}
+
+export async function remove(req: Request, res: Response, next: NextFunction) {
+    try {
+        await removeTask({
+            taskRepository: repository,
+            id: req.params.id,
+            userId: req.sub,
+        })
+        return res.status(204).send("task successfully removed")
     } catch (err) {
         next(err)
     }
