@@ -45,7 +45,7 @@
         "jsonwebtoken": "^9.0.0",
         "prisma": "^4.16.2",
         "uuid": "^9.0.0",
-        "vite-plugin-define": "^1.0.5",
+        "vite-plugin-define": "^1.0.6",
         "zod": "^3.21.4"
     }
 }
