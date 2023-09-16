@@ -31,11 +31,10 @@ export class PrismaTaskRepository extends TaskRepository {
         if (!deletedTask) throw new Error("Task not found")
     }
     async findById(id: string): Promise<Task> {
-        const task = await prisma.task.findUnique({
-            where: { id },
+        const task = await prisma.task.findUniqueOrThrow({
+            where: { id: "asddk" },
         })
 
-        if (!task) throw new Error("Task not found")
         return task
     }
 

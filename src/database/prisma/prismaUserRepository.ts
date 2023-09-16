@@ -28,21 +28,17 @@ export class PrismaUserRepository extends UserRepository {
     }
 
     async delete(id: string): Promise<void> {
-        const user = await prisma.user.findUnique({
+        const user = await prisma.user.findUniqueOrThrow({
             where: {
                 id,
             },
         })
 
-        if (user) {
-            await prisma.user.delete({
-                where: {
-                    id,
-                },
-            })
-        } else {
-            throw new Error("User not found")
-        }
+        await prisma.user.delete({
+            where: {
+                id,
+            },
+        })
     }
 
     async update(id: string, user: Partial<User>): Promise<User> {
@@ -60,12 +56,12 @@ export class PrismaUserRepository extends UserRepository {
     }
 
     async findById(id: string): Promise<User> {
-        const user = await prisma.user.findUnique({
+        const user = await prisma.user.findUniqueOrThrow({
             where: {
                 id,
             },
         })
-        if (!user) throw new Error("User not found")
+
         return user
     }
 }
