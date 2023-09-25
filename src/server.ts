@@ -3,10 +3,15 @@ import { userRouter } from "./http/routers/userRouter"
 import { taskRouter } from "./http/routers/taskRouter"
 import { authMiddleware } from "./http/middlewares/auth"
 import { ZodError } from "zod"
+import cors from "cors"
 
 export const app = express()
 app.use(express.json())
-
+app.use(
+    cors({
+        origin: "http://localhost:3000",
+    })
+)
 app.use("/task", authMiddleware, taskRouter)
 app.use("/user", userRouter)
 
