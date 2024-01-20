@@ -17,7 +17,7 @@
 -   [x] Rotas CRUD de tasks
 -   [x] Arquitetura MVC com princípios de SOLID e Clean Architecture
 -   [x] Sistema de autenticação JWT
--   [x] Testes unitários
+-   [x] Testes unitários não dependentes de banco de dados
 -   [ ] Testes end-to-end (não finalizado)
 -   [x] Sistema de gerenciamento de erros
 

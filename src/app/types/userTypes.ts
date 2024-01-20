@@ -23,5 +23,12 @@ export const UpdateUserSchema = z.object({
     password: z.string().min(6, "Password too short").optional(),
 })
 
+export const UserResponseSchema = z.object({
+    id: z.string().uuid(),
+    name: z.string(),
+    email: z.string().email(),
+})
+
 export type User = z.infer<typeof UserSchema>
 export type UpdateUser = z.infer<typeof UpdateUserSchema>
+export type UserResponse = z.infer<typeof UserResponseSchema>

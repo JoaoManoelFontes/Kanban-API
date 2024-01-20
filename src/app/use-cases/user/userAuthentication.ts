@@ -1,6 +1,7 @@
 import { Login } from "../../types/loginTypes"
 import { UserRepository } from "../../repositories/userRepository"
-import { User } from "../../types/userTypes"
+import { UserResponse } from "../../types/userTypes"
+import { UserResponseSchema } from "../../types/userTypes"
 import { sign } from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
@@ -10,7 +11,7 @@ interface userAuthenticationRequest {
 }
 
 interface userAuthenticationResponse {
-    user: User
+    user: UserResponse
     token: string
 }
 
@@ -35,7 +36,7 @@ export async function userAuthentication({
                 }
             )
 
-            return { user: userExists, token }
+            return { user: UserResponseSchema.parse(userExists), token }
         } else {
             throw new Error("Password doesn't match")
         }

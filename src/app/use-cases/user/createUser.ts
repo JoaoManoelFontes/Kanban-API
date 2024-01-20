@@ -1,5 +1,6 @@
-import { User } from "../../types/userTypes"
+import { UserResponse, User } from "../../types/userTypes"
 import { UserRepository } from "../../repositories/userRepository"
+import { UserResponseSchema } from "../../types/userTypes"
 
 interface createUserRequest {
     userRepository: UserRepository
@@ -7,7 +8,7 @@ interface createUserRequest {
 }
 
 interface createUserResponse {
-    createdUser: User
+    createdUser: UserResponse
 }
 
 export async function createUser({
@@ -19,6 +20,8 @@ export async function createUser({
     if (userExist) {
         throw new Error("User already exists")
     }
-    const createdUser = await userRepository.create(user)
+    const createdUser = UserResponseSchema.parse(
+        await userRepository.create(user)
+    )
     return { createdUser }
 }
