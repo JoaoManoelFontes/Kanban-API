@@ -1,0 +1,45 @@
+#? CREATE USER
+
+# POST  http://localhost:3333/user
+# Content-Type: application/json
+    
+#     {
+#     "name": "John Doe",
+#     "email": "test@mail.com",
+#     "password": "password"
+#     }
+
+
+#? AUTHENTICATE USER (get the token from response to use in other requests)
+
+# POST http://localhost:3333/user/auth
+# Content-Type: application/json
+    
+#     {
+#     "email": "test@mail.com",
+#     "password": "password"
+#     }
+
+
+#? GET USER
+
+# GET  http://localhost:3333/user
+# Authorization: Bearer {INSERT_YOUR_TOKEN_HERE}
+
+
+#? UPDATE USER
+
+# PUT  http://localhost:3333/user
+# Content-Type: application/json
+# Authorization: Bearer {INSERT_YOUR_TOKEN_HERE}
+
+#     {
+#     "name": "John Doe Updated"
+#     }
+
+
+#? DELETE USER
+
+# DELETE  http://localhost:3333/user
+# Content-Type: application/json
+# Authorization: Bearer {INSERT_YOUR_TOKEN_HERE}

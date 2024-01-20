@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "tsx src/server.ts",
-        "docker:init-db": "docker-compose up -d postgres", 
+        "docker:init-db": "docker-compose up -d db", 
         "test:e2e": "vitest run -c vitest.e2e.config.ts --dir src/http/tests",
         "test:e2e:watch": "vitest -c vitest.e2e.config.ts --dir src/http/tests",
         "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",

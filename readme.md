@@ -33,4 +33,14 @@
    `npx prisma migrate dev` ou `yarn prisma migrate dev`
 5. Rode a aplicação
    `npm run dev` ou `yarn dev`
-6. Acesse a aplicação em `http://localhost:{porta_definida_no_arquivo_env}`
+6. Acesse a aplicação em `http://localhost:3333`
+
+### Testando a aplicação
+
+1. Rode os testes unitários
+   `npm run test:unit` ou `yarn test:unit`
+2. Rode os testes end-to-end
+   _funcionalidade não finalizada_
+3. Teste a aplicação com o REST Client
+   - Para testar a aplicação com o REST Client, instale a extensão REST Client no VSCode e execute os requests da pasta `client`
+   - Os testes também podem ser feitos com o Insomnia, Postman ou outro software de sua preferência
