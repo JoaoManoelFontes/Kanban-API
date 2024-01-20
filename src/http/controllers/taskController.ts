@@ -21,7 +21,6 @@ export async function create(req: Request, res: Response, next: NextFunction) {
 
         return res.status(201).send(task)
     } catch (err) {
-        console.log(err)
         next(err)
     }
 }

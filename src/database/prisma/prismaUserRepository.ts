@@ -50,7 +50,6 @@ export class PrismaUserRepository extends UserRepository {
 
             return updatedUser
         } catch (err) {
-            console.log(err)
             throw new Error("Something went wrong in update user")
         }
     }

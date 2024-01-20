@@ -19,7 +19,6 @@ export class PrismaTaskRepository extends TaskRepository {
 
             return updatedTask
         } catch (err) {
-            console.log(err)
             throw new Error("Something went wrong in update task")
         }
     }
@@ -32,7 +31,7 @@ export class PrismaTaskRepository extends TaskRepository {
     }
     async findById(id: string): Promise<Task> {
         const task = await prisma.task.findUniqueOrThrow({
-            where: { id: "asddk" },
+            where: { id },
         })
 
         return task
