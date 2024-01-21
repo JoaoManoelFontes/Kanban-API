@@ -1,6 +1,5 @@
 import { UserRepository } from "../../repositories/userRepository"
-import { UserResponse } from "../../types/userTypes"
-import { UserResponseSchema } from "../../types/userTypes"
+import { User } from "../../types/userTypes"
 
 interface findUserRequest {
     userRepository: UserRepository
@@ -8,13 +7,13 @@ interface findUserRequest {
 }
 
 interface findUserResponse {
-    user: UserResponse
+    user: User
 }
 
 export async function findUser({
     userRepository: repository,
     id,
 }: findUserRequest): Promise<findUserResponse> {
-    const user = UserResponseSchema.parse(await repository.findById(id))
+    const user = await repository.findById(id)
     return { user }
 }

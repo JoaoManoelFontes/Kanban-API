@@ -1,9 +1,8 @@
 import { Login } from "../../types/loginTypes"
 import { UserRepository } from "../../repositories/userRepository"
-import { UserResponse } from "../../types/userTypes"
-import { UserResponseSchema } from "../../types/userTypes"
 import { sign } from "jsonwebtoken"
 import bcrypt from "bcrypt"
+import { User } from "@prisma/client"
 
 interface userAuthenticationRequest {
     userRepository: UserRepository
@@ -11,7 +10,7 @@ interface userAuthenticationRequest {
 }
 
 interface userAuthenticationResponse {
-    user: UserResponse
+    user: User
     token: string
 }
 
@@ -36,7 +35,7 @@ export async function userAuthentication({
                 }
             )
 
-            return { user: UserResponseSchema.parse(userExists), token }
+            return { user: userExists, token }
         } else {
             throw new Error("Password doesn't match")
         }

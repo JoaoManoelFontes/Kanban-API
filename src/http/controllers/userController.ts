@@ -6,7 +6,11 @@ import { deleteUser } from "../../app/use-cases/user/deleteUser"
 import { updateUser } from "../../app/use-cases/user/updateUser"
 import { findUser } from "../../app/use-cases/user/findUser"
 import { LoginSchema } from "../../app/types/loginTypes"
-import { UserSchema, UpdateUserSchema } from "../../app/types/userTypes"
+import {
+    UserSchema,
+    UpdateUserSchema,
+    ResponseUserSchema,
+} from "../../app/types/userTypes"
 
 const repository = new PrismaUserRepository()
 
@@ -17,7 +21,8 @@ export async function create(req: Request, res: Response, next: NextFunction) {
             userRepository: repository,
             user: params,
         })
-        res.status(201).send(createdUser)
+        const userResponse = ResponseUserSchema.parse(createdUser)
+        res.status(201).send(userResponse)
     } catch (err) {
         next(err)
     }
@@ -30,8 +35,9 @@ export async function auth(req: Request, res: Response, next: NextFunction) {
             userRepository: repository,
             user: params,
         })
-        res.send({
-            user,
+        const userResponse = ResponseUserSchema.parse(user)
+        res.status(200).send({
+            userResponse,
             token,
         })
     } catch (err) {
@@ -59,7 +65,8 @@ export async function update(req: Request, res: Response, next: NextFunction) {
             user: params,
             id: req.sub,
         })
-        res.status(200).send(updatedUser)
+        const userResponse = ResponseUserSchema.parse(updatedUser)
+        res.status(200).send(userResponse)
     } catch (err) {
         next(err)
     }
@@ -71,8 +78,8 @@ export async function detail(req: Request, res: Response, next: NextFunction) {
             userRepository: repository,
             id: req.sub,
         })
-
-        return res.status(200).send(user)
+        const userResponse = ResponseUserSchema.parse(user)
+        return res.status(200).send(userResponse)
     } catch (err) {
         next(err)
     }

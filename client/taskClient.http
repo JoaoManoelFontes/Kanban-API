@@ -15,8 +15,8 @@
 # Authorization: Bearer {INSERT_YOUR_TOKEN_HERE}
 
 # {
-# 	"title":"title2",
-# 	"content":"content2"
+# 	"title":"My task title",
+# 	"content":"My task content...."
 # }
 
 

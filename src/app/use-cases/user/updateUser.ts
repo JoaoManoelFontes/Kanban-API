@@ -1,6 +1,5 @@
 import { UserRepository } from "../../repositories/userRepository"
-import { UpdateUser, UserResponse } from "../../types/userTypes"
-import { UserResponseSchema } from "../../types/userTypes"
+import { UpdateUser, User } from "../../types/userTypes"
 import bcrypt from "bcrypt"
 
 interface updateUserRequest {
@@ -10,7 +9,7 @@ interface updateUserRequest {
 }
 
 interface updateUserResponse {
-    updatedUser: UserResponse
+    updatedUser: User
 }
 
 export async function updateUser({
@@ -27,8 +26,7 @@ export async function updateUser({
         user.password = bcrypt.hashSync(user.password, 10)
     }
 
-    const updatedUser = UserResponseSchema.parse(
-        await repository.update(id, user)
-    )
+    const updatedUser = await repository.update(id, user)
+
     return { updatedUser }
 }
