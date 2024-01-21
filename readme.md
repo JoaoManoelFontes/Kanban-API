@@ -4,22 +4,22 @@
 
 ### Tecnologias utilizadas
 
--   Typescript
--   NodeJS
--   Express
--   Prisma
--   Postgres
--   Vitest
+- Typescript
+- NodeJS
+- Express
+- Prisma
+- Postgres
+- Vitest
 
 ### Features da aplicação
 
--   [x] Rotas CRUD de usuários
--   [x] Rotas CRUD de tasks
--   [x] Arquitetura MVC com princípios de SOLID e Clean Architecture
--   [x] Sistema de autenticação JWT
--   [x] Testes unitários não dependentes de banco de dados
--   [ ] Testes end-to-end (não finalizado)
--   [x] Sistema de gerenciamento de erros
+- [x] Rotas CRUD de usuários
+- [x] Rotas CRUD de tasks
+- [x] Arquitetura MVC com princípios de SOLID e Clean Architecture
+- [x] Sistema de autenticação JWT
+- [x] Testes unitários não dependentes de banco de dados
+- [ ] Testes end-to-end
+- [x] Sistema de gerenciamento de erros
 
 ### Como rodar a aplicação
 
@@ -39,8 +39,11 @@
 
 1. Rode os testes unitários
    `npm run test:unit` ou `yarn test:unit`
-2. Rode os testes end-to-end
-   _funcionalidade não finalizada_
-3. Teste a aplicação com o REST Client
+2. Rode os testes end-to-end (_funcionalidade não finalizada_)
+   - Execute o comando `npm run pretest:e2e` ou `yarn pretest:e2e` para iniciar o servidor de testes
+   - Execute o comando `npm run test:e2e` ou `yarn test:e2e` para rodar os testes end-to-end
+3. Rode os testes de cobertura para testes unitários
+   `npm run test:unit:coverage` ou `yarn test:unit:coverage`
+4. Teste a aplicação com o REST Client
    - Para testar a aplicação com o REST Client, instale a extensão REST Client no VSCode e execute os requests da pasta `client`
    - Os testes também podem ser feitos com o Insomnia, Postman ou outro software de sua preferência

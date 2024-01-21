@@ -5,5 +5,8 @@ export default defineConfig({
         clearMocks: true,
         globals: true,
         setupFiles: ["dotenv/config"],
+        coverage: {
+            reporter: ["text", "html", "json"],
+        },
     },
 })

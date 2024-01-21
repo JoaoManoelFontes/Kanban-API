@@ -4,17 +4,19 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "start": "tsx src/server.ts",
-        "docker:init-db": "docker-compose up -d db", 
+        "start:dev": "tsx watch src/server.ts",
+        "build": "tsup src",
+        "docker:init-db": "docker-compose up -d db",
+        "test:unit": "vitest run -c vitest.config.ts --dir src/app/use-cases",
+        "test:unit:watch": "vitest -c vitest.config.ts --dir src/app/use-cases",
+        "test:unit:coverage": "vitest run -c vitest.config.ts --dir src/app/use-cases --coverage",
+        "test:unit:coverage:watch": "vitest -c vitest.config.ts --dir src/app/use-cases --coverage",
+        "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
         "test:e2e": "vitest run -c vitest.e2e.config.ts --dir src/http/tests",
         "test:e2e:watch": "vitest -c vitest.e2e.config.ts --dir src/http/tests",
         "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",
-        "test:install-prisma-environment": "npm link vitest-environment-prisma",
-        "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
-        "start:dev": "tsx watch src/server.ts",
-        "test:unit": "vitest -c vitest.config.ts --dir src/app/use-cases",
-        "build": "tsup src"
+        "test:install-prisma-environment": "npm link vitest-environment-prisma"
     },
     "keywords": [],
     "author": "",
@@ -27,6 +29,7 @@
         "@types/uuid": "^9.0.1",
         "@typescript-eslint/eslint-plugin": "^5.59.8",
         "@typescript-eslint/parser": "^5.59.8",
+        "@vitest/coverage-v8": "^1.2.1",
         "eslint": "^8.42.0",
         "eslint-config-prettier": "^8.8.0",
         "npm-run-all": "^4.1.5",
@@ -35,7 +38,7 @@
         "tsup": "^7.1.0",
         "tsx": "^3.12.6",
         "typescript": "^5.0.3",
-        "vitest": "^0.32.2"
+        "vitest": "^1.2.1"
     },
     "dependencies": {
         "@prisma/client": "^4.12.0",

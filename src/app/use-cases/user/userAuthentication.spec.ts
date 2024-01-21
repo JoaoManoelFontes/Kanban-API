@@ -1,4 +1,3 @@
-import { expect, test } from "vitest"
 import { InMemoryUserRepository } from "../../../database/inMemory/inMemoryUserRepository"
 import { userAuthentication } from "./userAuthentication"
 import { createUserFactory } from "../../factories/createUserFactory"
